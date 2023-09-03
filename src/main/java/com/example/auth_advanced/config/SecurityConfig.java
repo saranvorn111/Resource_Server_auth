@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-
+    // create SecurityFilterChain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -29,9 +29,13 @@ public class SecurityConfig {
     @Bean
     public JwtDecoder jwtDecoder(){
 
-       NimbusJwtDecoder nimbusJwtDecoder = NimbusJwtDecoder.withJwkSetUri("" +
-               "http://localhost:8080/oauth2/jwks").build();
+        NimbusJwtDecoder  jwtDecoder = NimbusJwtDecoder.withJwkSetUri(
 
-        return nimbusJwtDecoder;
+                "http://localhost:8082/oauth2/jwks"
+
+        ).build();
+
+        return jwtDecoder;
     }
+
 }
